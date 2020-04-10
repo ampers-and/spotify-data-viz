@@ -29,7 +29,7 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
         },
       })
         .then((response) => response.json())
-        .then((data) => setArtists(data));
+        .then((data) => setArtists(data.artists));
     };
 
     getArtistsById();
@@ -51,7 +51,14 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
 
   //creating genres with artist names
 
-  const genres = artists.artists
+  // const genres = artists.artists
+  //   .map((artist) => artist.genres.map((genre, i) => genre))
+  //   .reduce(
+  //     (accumulator, currentValue) => accumulator.concat(currentValue),
+  //     []
+  //   );
+
+  const genres = artists
     .map((artist) => artist.genres.map((genre, i) => genre))
     .reduce(
       (accumulator, currentValue) => accumulator.concat(currentValue),
@@ -60,13 +67,17 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
 
   console.log("genres", genres);
 
-  const genres2 = artists.artists.map((artist) =>
+  const genres2 = artists.map((artist) =>
     artist.genres.map((genre, i) => genre)
   );
 
   console.log("2", genres2);
 
   const genreArtists = {};
+
+  // for( let i = 0; i < artists.length; i++){
+  //   genreArtists[artists[]]
+  // }
 
   const genresOccurrences = {};
 
