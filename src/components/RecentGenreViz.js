@@ -64,7 +64,7 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
     }
   }
 
-  console.log("genreOcc", genresOccurences);
+  console.log("genreOcc", genresOccurrences);
 
   return (
     <div>
