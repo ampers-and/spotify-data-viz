@@ -47,6 +47,8 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
   ideas - link to length of song - time spent listening to a certain genre
   */
 
+  console.log(artists);
+
   const genres = artists.artists
     .map((artist) => artist.genres.map((genre, i) => genre))
     .reduce(
@@ -71,7 +73,7 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
       <h2>Genres</h2>
       {/* <GenreGraph data={genresOccurrences} /> */}
       {/* <PieBar data={genresOccurrences} /> */}
-      <GenrePie data={genresOccurrences} />
+      <GenrePie data={genresOccurrences} artists={artists} />
     </div>
   );
 };
