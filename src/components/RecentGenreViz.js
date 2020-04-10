@@ -47,12 +47,26 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
   ideas - link to length of song - time spent listening to a certain genre
   */
 
+  console.log(artists);
+
+  //creating genres with artist names
+
   const genres = artists.artists
     .map((artist) => artist.genres.map((genre, i) => genre))
     .reduce(
       (accumulator, currentValue) => accumulator.concat(currentValue),
       []
     );
+
+  console.log("genres", genres);
+
+  const genres2 = artists.artists.map((artist) =>
+    artist.genres.map((genre, i) => genre)
+  );
+
+  console.log("2", genres2);
+
+  const genreArtists = {};
 
   const genresOccurrences = {};
 
@@ -71,7 +85,7 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
       <h2>Genres</h2>
       {/* <GenreGraph data={genresOccurrences} /> */}
       {/* <PieBar data={genresOccurrences} /> */}
-      <GenrePie data={genresOccurrences} />
+      <GenrePie data={genresOccurrences} artists={artists} />
     </div>
   );
 };

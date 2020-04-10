@@ -1,8 +1,9 @@
 import React from "react";
 import { VictoryPie, VictoryContainer } from "victory";
 
-const GenrePie = ({ data }) => {
+const GenrePie = ({ data, artists }) => {
   const genreList = [];
+  console.log(artists);
   console.log(data);
   for (let key in data) {
     genreList.push({ genre: key, artists: data[key] });
@@ -17,8 +18,8 @@ const GenrePie = ({ data }) => {
         style={{
           labels: {
             fontSize: 4,
-            fill: "#333"
-          }
+            fill: "#333",
+          },
         }}
         x="genre"
         y="artists"
