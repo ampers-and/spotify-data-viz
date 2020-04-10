@@ -15,7 +15,7 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
   const [artists, setArtists] = useState(null);
 
   const artistIDs = recentSongs
-    .map(item => item.track.artists.map(a => a.id))
+    .map((item) => item.track.artists.map((a) => a.id))
     .reduce(
       (accumulator, currentValue) => accumulator.concat(currentValue),
       []
@@ -25,11 +25,11 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
     const getArtistsById = () => {
       fetch(`https://api.spotify.com/v1/artists?ids=${artistIDs.join(",")}`, {
         headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
+          Authorization: `Bearer ${accessToken}`,
+        },
       })
-        .then(response => response.json())
-        .then(data => setArtists(data));
+        .then((response) => response.json())
+        .then((data) => setArtists(data));
     };
 
     getArtistsById();
@@ -48,7 +48,7 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
   */
 
   const genres = artists.artists
-    .map(artist => artist.genres.map((genre, i) => genre))
+    .map((artist) => artist.genres.map((genre, i) => genre))
     .reduce(
       (accumulator, currentValue) => accumulator.concat(currentValue),
       []
@@ -63,6 +63,8 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
       genresOccurrences[genre]++;
     }
   }
+
+  console.log("genreOcc", genresOccurrences);
 
   return (
     <div>
