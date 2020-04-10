@@ -75,9 +75,12 @@ export const RecentGenreViz = ({ recentSongs, accessToken }) => {
 
   const genreArtists = {};
 
+  console.log("artist length", artists.length);
+
   for (let i = 0; i < artists.length; i++) {
     let artist = artists[i];
-    genreArtists[artist] = artist.genres.map((genre, i) => genre);
+    console.log("i", i, "artist", artists[i]);
+    genreArtists[artist.name] = artist.genres.map((genre, i) => genre);
   }
 
   console.log("artists genres", genreArtists);
